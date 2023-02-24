@@ -1,0 +1,74 @@
+<!--
+디지털 시계 만들기
+2022년 10월 17일 14:39:51
+-->
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <child-component v-bind:propsdata="setClock"></child-component>
+    </div>
+    <script>
+      Vue.component("child-component", {
+        props: ["propsdata"],
+        template: "<p>{{ propsdata }}</p>"
+      });
+
+      new Vue({
+        el: "#app",
+        data: {
+          message: "Hello Vue!"
+        },
+        methods: {
+          setClock: function() {
+            var dateInfo = new Date();
+            var year = dateInfo.getFullYear();
+            var month = dateInfo.getMonth()+1;  // monthIndex를 반환해주기 때문에 1을 더해준다.
+            var date = dateInfo.getDate();
+            var hour = modifyNumber(dateInfo.getHours());
+            var min = modifyNumber(dateInfo.getMinutes());
+            var sec = modifyNumber(dateInfo.getSeconds());
+            document.getElementById("digitalclock").innerHTML = year + "년" + month + "월" + date + "일 " + hour + ":" + min + ":" + sec;
+          }
+        }
+      });
+      /*
+      var digitalclockView = new Vue({
+        el: '#digitalclock',
+        data: {
+          counter: 1
+        }
+      });
+
+      function setClock() {
+        var dateInfo = new Date();
+        var year = dateInfo.getFullYear();
+        var month = dateInfo.getMonth()+1;  // monthIndex를 반환해주기 때문에 1을 더해준다.
+        var date = dateInfo.getDate();
+        var hour = modifyNumber(dateInfo.getHours());
+        var min = modifyNumber(dateInfo.getMinutes());
+        var sec = modifyNumber(dateInfo.getSeconds());
+        document.getElementById("digitalclock").innerHTML = year + "년" + month + "월" + date + "일 " + hour + ":" + min + ":" + sec;
+      }
+
+      function modifyNumber(time) {
+        if(parseInt(time)<10) {
+          return "0" + time;
+        }
+        else {
+          return time;
+        }
+      }
+
+      window.onload = function() {
+        setClock();
+        setInterval(setClock, 1000);
+      }
+      */
+    </script>
+  </body>
+</html>

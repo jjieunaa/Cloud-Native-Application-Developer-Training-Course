@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSTest</title>
+<script src="js/variable.js"></script>
+<script>
+	// global
+	console.log(a);
+	console.log(window.a);
+	console.log(this.a);
+	console.log(b);
+	console.log(c);
+	console.log(d);
+	
+	// local
+	console.log(f);
+	console.log(window.f);
+	console.log(this.f);
+	// g와 h는 window 게 아님
+	// console.log(g);
+	// console.log(h);
+	// 함수는 변수들과 연계되어 있는 것, 함수가 변수들을 가지고 있는 것이 아님
+	console.log(f.g);
+	console.log(f.h);
+	console.log(f.i);
+	console.log(window.i);	// function 안에서 hoisting 되었기 때문에 undefined
+	console.log(this.i);
+	console.log(f.j);
+	console.log(f.k);
+	console.log(f.l);
+	
+	// block
+	console.log(m);
+	console.log(window.m);
+	console.log(n);
+	console.log(window.n);
+	console.log(o);
+	console.log(p);
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+      {{ message }}
+    </div>
+    <script>
+      const lifecycleView = new Vue({
+        el: "#app",
+        data: {
+          message: "lifecycle"
+        },
+        // lifecycle 콜백함수 또는 훅이라 부름
+        beforeCreate: function() {
+          console.log("beforeCreate");
+          console.log("beforeCreate => " + this.message);
+          console.log("beforeCreate => " + this.$el);
+        },
+        created: function() {
+          console.log("created");
+          console.log("created => " + this.message);
+          console.log("created => " + this.$el);
+        },
+        beforeMount: function() {
+          console.log("beforeMount");
+          console.log("beforeMount => " + this.message);
+          console.log("beforeMount => " + this.$el);
+        },
+        mounted: function() {
+          console.log("mounted");
+          console.log("mounted => " + this.message);
+          console.log("mounted => " + this.$el);
+        },
+        beforeUpdate: function() {
+          console.log("beforeUpdate");
+          console.log("beforeUpdate => " + this.message);
+          console.log("beforeUpdate => " + this.$el);
+        },
+        updated: function() {
+          console.log("updated");
+          console.log("updated => " + this.message);
+          console.log("updated => " + this.$el);
+        },
+        beforeDestroy: function() {
+          console.log("beforeDestroy");
+          console.log("beforeDestroy => " + this.message);
+          console.log("beforeDestroy => " + this.$el);
+        },
+        destroyed: function() {
+          console.log("destroyed");
+          console.log("destroyed => " + this.message);
+          console.log("destroyed => " + this.$el);
+        }
+      });
+
+      lifecycleView.message = "new message1";
+      lifecycleView.message = "new message2";
+      lifecycleView.message = "new message3";
+      lifecycleView.message = "new message4";
+      lifecycleView.message = "new message5";
+
+      /*
+      for (let prop in lifecycleView) {
+        console.log(prop);
+      }
+
+      console.log(lifecycleView.$el);
+      console.log(lifecycleView.$attrs);
+      */
+    </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>hello vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!--
+        * data 객체의 프라퍼티(속성)을 바인딩하는 템플릿
+        * data 객체의 프라퍼티의 값이 변경되면 View도 변경됨(바인딩)
+      -->
+      {{ message }}&nbsp;{{ who }}  <!-- template -->
+    </div>
+    <script>
+      // Vue 객체 (Vue 인스턴스 생성)
+      // 생성자의 인자로 뷰 모델 객체를 넣어줌
+      // model에 있는 data를 view에 binding
+      new Vue({
+        el: '#app',   // View가 되는 DOM Element
+        // Model이 되는 data 객체
+        data: {   // model
+          message: 'Hello',
+          who: 'Vue.js!'
+        }
+      });
+    </script>
+  </body>
+</html>

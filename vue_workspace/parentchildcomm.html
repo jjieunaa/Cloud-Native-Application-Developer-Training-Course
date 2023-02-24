@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">  <!-- 상위 -->
+      <child-component v-bind:propsdata="message"></child-component>  <!-- 하위 -->
+    </div>
+    <script>
+      // 상위에서 하위로 데이터 전달
+      // Vue는 최상위 컴포넌트
+      // 모든 컴포넌트는 독립적
+      // 하위 전역 컴포넌트 생성
+      // 상위 컴포넌트의 데이터를 수신할 프라퍼티를 정의(props)
+      Vue.component("child-component", {
+        props: ["propsdata"],
+        template: "<p>{{ propsdata }}</p>"
+      });
+      // 상위 지역 컴포넌트 생성
+      new Vue({
+        el: "#app",
+        data: {
+          message: "Hello Vue!"
+        }
+      });
+    </script>
+  </body>
+</html>

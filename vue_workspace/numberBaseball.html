@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <child-component></child-component>
+    </div>
+    <script>
+      var counterView = new Vue({
+        el: '#counter',
+        data: {
+          counter: 1
+        }
+      });
+      window.onload = function() {
+        setInterval(addCount, "1000");
+      }
+      function addCount() {
+        counterView.counter += 1;
+      }
+    </script>
+  </body>
+</html>

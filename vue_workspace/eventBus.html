@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <child-component></child-component>
+    </div>
+    <script>
+      // 이벤트 버스로 사용할 뷰 인스턴스 생성
+      const eventBus = new Vue();
+
+      // 하위 전역 컴포넌트 생성
+      Vue.component("child-component", {
+        template: "<div>하위 컴포넌트<button v-on:click='showLog'>show</button></div>",
+        methods: {
+          showLog: function() {
+            // 사용자 정의 이벤트를 발생시키면서 이벤트 핸들러에 전달할 데이터를 정의
+            eventBus.$emit("triggerEvent", 100);
+          }
+        }
+      });
+      // 상위 컴포넌트 정의
+      const app = new Vue({
+        el: "#app",
+        created: function() {
+          // 발생된 사용자 정의 이벤트를 수신해서 이벤트 핸들러로 처리
+          eventBus.$on("triggerEvent", function(value) {
+            console.log("전달받은 값: " + value);
+          });
+        }
+      })
+    </script>
+  </body>
+</html>

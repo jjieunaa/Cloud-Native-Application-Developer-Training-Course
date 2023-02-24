@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <router-view></router-view>
+    </div>
+    <script>
+      // 템플릿 객체
+      let User = {
+        template: `
+          <div>
+            User component
+            <router-view></router-view>
+          </div>
+        `
+      };
+
+      let UserProfile = {
+        template: "<p>User Profile Component</p>"
+      };
+
+      let UserPost = {
+        template: "<p>User Post Component</p>"
+      };
+
+      // 라우터 객체 배열
+      let routes = [
+        {
+          path: "/user",
+          component: User,
+          children: [ // 하위 라우터뷰를 배열로 정의
+            {
+              path: "profile",
+              component: UserProfile
+            },
+            {
+              path: "posts",
+              component: UserPost
+            }
+          ]
+        }
+      ];
+
+      // 뷰 라우터
+      let router = new VueRouter({ routes });
+
+      // 뷰 객체
+      let app = new Vue({router}).$mount("#app");
+    </script>
+  </body>
+</html>

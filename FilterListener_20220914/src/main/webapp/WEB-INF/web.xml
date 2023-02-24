@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>FilterListener_20220914</display-name>
+  
+  <listener>
+  	<listener-class>listener.MyListener</listener-class>
+  </listener>
+  
+  <context-param>
+  	<param-name>ctx</param-name>
+  	<param-value>100</param-value>
+  </context-param>
+  
+  <filter>
+  	<filter-name>UTF8EncodingFilter</filter-name>
+  	<filter-class>filter.UTF8EncodingFilter</filter-class>
+  	<init-param>
+  		<param-name>encoding</param-name>
+  		<param-value>utf-8</param-value>
+  	</init-param>
+  </filter>
+  
+  <filter>
+  	<filter-name>myFilter1</filter-name>
+  	<filter-class>filter.MyFilter1</filter-class>
+  	<init-param>
+  		<param-name>name</param-name>
+  		<param-value>홍길동</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>age</param-name>
+  		<param-value>30</param-value>
+  	</init-param>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>myFilter1</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+  	<filter-name>myFilter2</filter-name>
+  	<filter-class>filter.MyFilter2</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>myFilter2</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+</web-app>
