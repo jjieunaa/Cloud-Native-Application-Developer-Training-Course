@@ -1,0 +1,16 @@
+[실습 11/10: Spring Security]
+0. jsp 폴더: /views/jsp/admin/
+1. 로그인 페이지 (mapping: /, jsp: /loginForm.jsp)
+2. 관리자 메인 페이지 (mapping: /adminMain, jsp: adminMain.jsp)
+3. 관리자 메인 페이지 상단에 4개 메뉴: [홈] [사용자 관리] [게시판 관리] [로그아웃]
+4. [홈] 클릭 시 관리자 메인 페이지로 이동
+5. [사용자 관리] 클릭 시 사용자 관리 권한 체크 후
+	(mapping: /admin/memberManagement, jsp: memberManagement.jsp)를 보여줌
+6. [게시판 관리] 클릭 시 게시판 관리 권한 체크 후 boardManagement.jsp를 보여줌
+	(mapping: /admin/boardManagement, jsp: boardManagement.jsp)
+7. [로그아웃] 클릭 시 로그아웃 처리 후 로그인 페이지로 이동
+
+#권한
+ROLE_ADMIN: 전체 메뉴 접근 권한 (a/a)
+ROLE_MEMBER_ADMIN: 사용자 관리 메뉴 접근 권한 (ma/ma)
+ROLE_BOARD_ADMIN: 게시판 관리 메뉴 접근 권한 (ba/ba)
